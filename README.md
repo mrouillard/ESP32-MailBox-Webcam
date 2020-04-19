@@ -19,7 +19,7 @@ I have added NTP, mDNS and an optional parameter to trigger the LED flash when t
 
 ## take a still with flash on
 
-* call http://your_url_or_IP/capture?flash=1 or http://bal.local/capture?flash=1
+* call <http://your_url_or_IP/capture?flash=1> or <http://bal.local/capture?flash=1>
 
 ## Create MP4 from timelapse JPG
 
