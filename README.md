@@ -3,9 +3,10 @@
 ESP32 Cam project for timelaps and streaming.
 
 The project was started with the code of [bitluni/ESP32CamTimeLapse](https://github.com/bitluni/ESP32CamTimeLapse).
+
 Then the PlatformIO version was forked from [JackGruber/ESP32-Timelaps-Webcam](https://github.com/JackGruber/ESP32-Timelaps-Webcam).
 
-I have added NTP,and various changes for my own purpose.
+I have added NTP, mDNS and an optional parameter to trigger the LED flash when taking a still.
 
 <img src="img/http_app.jpg">
 
