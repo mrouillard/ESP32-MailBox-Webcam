@@ -14,8 +14,14 @@ I have added NTP, mDNS and an optional parameter to trigger the LED flash when t
 
 * Rename `include\wifi_credentials.example` to `include\wifi_credentials.h` and enter your WiFi credentials in the file.
 * Remove the comment for your board in `include\pins_camera.h` and comment all other boards
+* modify line 21 of main.cpp to change the local name. Defaut value is `bal` which gives a local name bal.local. @TODO: put this setting in settings.h
 
-## Create MP4 from timelaps JPG
+
+## take a still with flash on
+
+* call http://your_url_or_IP/capture?flash=1 or http://bal.local/capture?flash=1
+
+## Create MP4 from timelapse JPG
 
 Converting the images to a video you can use [ffmpeg](https://www.ffmpeg.org/download.html) encoder.
 ```
