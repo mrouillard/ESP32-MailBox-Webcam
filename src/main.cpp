@@ -18,7 +18,7 @@ void setup()
   WiFiInit();
   NTPInit();
   printLocalTime();
-  mdnsInit("bal","ESP32-CAM for mailbox");
+  mdnsInit("esp32cam","ESP32-CAM for mailbox");
 
   HTTPAppStartCameraServer();
 }
