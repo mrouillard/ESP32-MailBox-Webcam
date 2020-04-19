@@ -18,6 +18,7 @@
 #include "esp_timer.h"
 #include "esp_camera.h"
 #include "Arduino.h"
+#include "settings.h"
 
 #include "TimeLaps.h"
 #include "HTTPApp.h"
@@ -72,23 +73,42 @@ static esp_err_t HTTPAppHandlerCaptureJPG(httpd_req_t *req)
 	esp_err_t res = ESP_OK;
     size_t fb_len = 0;
     int64_t fr_start = esp_timer_get_time();
+	char *buf;
+	size_t buf_len;
+	char value[32] = {0,};
+	
+	pinMode(LED_FLASH, OUTPUT); // prepare the pin for the LED
+	
+	//checking if flash param is passed in url
+	buf_len = httpd_req_get_url_query_len(req) + 1;
+	if (buf_len > 1) {
+		buf = (char *)malloc(buf_len);
+		if(buf) {
+			if(httpd_req_get_url_query_str(req, buf,buf_len) == ESP_OK) {
+				if(httpd_query_key_value(buf, "flash", value, sizeof(value)) == ESP_OK) {
+					if(value[0] && 1) { //if yes, then set LED on
+    					digitalWrite(LED_FLASH, HIGH);
+					}
+				}
+			}
+		}
+	}
 
 	fb = esp_camera_fb_get();
-	if (!fb)
-	{
+	if (!fb) {
 		Serial.println("Camera capture failed");
 		httpd_resp_send_500(req);
 		return ESP_FAIL;
 	}
 
     res = httpd_resp_set_type(req, "image/jpeg");
-    if(res == ESP_OK){
+    if(res == ESP_OK) {
         res = httpd_resp_set_hdr(req, "Content-Disposition", "inline; filename=capture.jpg");
         res = httpd_resp_set_hdr(req, "Access-Control-Allow-Origin", "*");
     }
 
     if(res == ESP_OK){
-        if(fb->format == PIXFORMAT_JPEG){
+        if(fb->format == PIXFORMAT_JPEG) {
             fb_len = fb->len;
             res = httpd_resp_send(req, (const char *)fb->buf, fb->len);
         } else {
@@ -100,6 +120,8 @@ static esp_err_t HTTPAppHandlerCaptureJPG(httpd_req_t *req)
     }
     esp_camera_fb_return(fb);
     int64_t fr_end = esp_timer_get_time();
+	
+	digitalWrite(LED_FLASH, LOW); //turn LED OFF, it is safe to put the pin LOW in any case
     Serial.printf("JPG: %uKB %ums\n", (uint32_t)(fb_len/1024), (uint32_t)((fr_end - fr_start)/1000));
     return res;
 }
