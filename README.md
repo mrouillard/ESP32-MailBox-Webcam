@@ -8,27 +8,26 @@ Then the PlatformIO version was forked from [JackGruber/ESP32-Timelaps-Webcam](h
 
 I have added NTP, mDNS and an optional parameter to trigger the LED flash when taking a still.
 
-![example still](./img/http_app.jpg)
-
 ## Configure
 
 * Rename `include\wifi_credentials.example` to `include\wifi_credentials.h` and enter your WiFi credentials in the file.
 * Remove the comment for your board in `include\pins_camera.h` and comment all other boards
 * modify line 21 of main.cpp to change the local name. Defaut value is `bal` which gives a local name bal.local. @TODO: put this setting in settings.h
 
-
-## take a still with flash on
+## Take a still with flash on
 
 * call <http://your_url_or_IP/capture?flash=1> or <http://bal.local/capture?flash=1>
 
 ## Create MP4 from timelapse JPG
 
 Converting the images to a video you can use [ffmpeg](https://www.ffmpeg.org/download.html) encoder.
-```
+
+```bash
 ffmpeg.exe -r 60 -f image2 -i "C:\Temp\timelapse\pic%05d.jpg"  -codec libx264 -crf 23 -pix_fmt yuv420p -vf "transpose=1" "C:\Temp\timelapse\timelapse.mp4"
 ```
 
-### Parameters 
+### Parameters
+
 * `-r <rate>` set the framerate (fps)
 * `-f <fmt>` force input format
 * `-i <infile>` inputfile, `%05d` means that all files from 00000 to 99999 are used
@@ -40,11 +39,12 @@ ffmpeg.exe -r 60 -f image2 -i "C:\Temp\timelapse\pic%05d.jpg"  -codec libx264 -c
 * `-vf "transpose=<number>"` Rotating: 0 = 90° Counterclockwise, 1 = 90° Clockwise, 2 = 90° Counterclockwise, 3 = 90° Clockwise and Vertical Flip. Use `-vf "transpose=2,transpose=2"` for 180 degrees
 
 ## ToDO
-* Add NTP time sync
+
 * Add DeepSleep option for timelaps
 * Save configuration from web permanently
 
 ## Links
+
 * [Original GitHub repro ESP32CamTimeLapse](https://github.com/bitluni/ESP32CamTimeLapse)
 * [Project page from the ESP32CamTimeLapse](https://bitluni.net/esp32camtimelapse)
 * [FFmpeg download](https://www.ffmpeg.org/download.html)
