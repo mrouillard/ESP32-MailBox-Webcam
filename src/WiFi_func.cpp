@@ -45,6 +45,8 @@ void WiFiConnectSTA(void)
   Serial.println(WiFi.subnetMask());
   Serial.print("Gateway: ");
   Serial.println(WiFi.gatewayIP());
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
   Serial.println("=======================================");
 }
 

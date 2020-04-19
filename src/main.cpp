@@ -4,6 +4,8 @@
 #include "SD.h"
 #include "TimeLaps.h"
 #include "HTTPApp.h"
+#include "NTP.h"
+#include "mDNS.h"
 
 void setup() 
 {
@@ -14,6 +16,9 @@ void setup()
   CameraInit();
 
   WiFiInit();
+  NTPInit();
+  printLocalTime();
+  mdnsInit("bal","ESP32-CAM for mailbox");
 
   HTTPAppStartCameraServer();
 }
