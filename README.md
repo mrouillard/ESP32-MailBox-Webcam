@@ -8,7 +8,7 @@ Then the PlatformIO version was forked from [JackGruber/ESP32-Timelaps-Webcam](h
 
 I have added NTP, mDNS and an optional parameter to trigger the LED flash when taking a still.
 
-![](img src="img/http_app.jpg")
+![example still](/img/http_app.jpg)
 
 ## Configure
 
