@@ -7,6 +7,7 @@ The project was started with the code of [bitluni/ESP32CamTimeLapse](https://git
 Then the PlatformIO version was forked from [JackGruber/ESP32-Timelaps-Webcam](https://github.com/JackGruber/ESP32-Timelaps-Webcam).
 
 I have added NTP, mDNS and an optional parameter to trigger the LED flash when taking a still.
+@WIP I am trying to add SSL certificate to force https only for security purposes.
 
 ## Configure
 

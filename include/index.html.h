@@ -143,18 +143,18 @@ R"(<!doctype html>
                 line-height: 28px;
                 cursor: pointer;
                 color: #fff;
-                background: #ff3034;
+                background: #477d32;
                 border-radius: 5px;
                 font-size: 16px;
                 outline: 0
             }
 
             button:hover {
-                background: #ff494d
+                background: #508730
             }
 
             button:active {
-                background: #f21c21
+                background: #3b764a
             }
 
             button.disabled {
@@ -189,7 +189,7 @@ R"(<!doctype html>
                 height: 22px;
                 width: 22px;
                 border-radius: 50px;
-                background: #ff3034;
+                background: #508730;
                 cursor: pointer;
                 -webkit-appearance: none;
                 margin-top: -11.5px
@@ -213,7 +213,7 @@ R"(<!doctype html>
                 height: 22px;
                 width: 22px;
                 border-radius: 50px;
-                background: #ff3034;
+                background: #508730;
                 cursor: pointer
             }
 
@@ -243,7 +243,7 @@ R"(<!doctype html>
                 height: 22px;
                 width: 22px;
                 border-radius: 50px;
-                background: #ff3034;
+                background: #508730;
                 cursor: pointer;
                 height: 2px
             }
@@ -296,7 +296,7 @@ R"(<!doctype html>
             }
 
             input:checked+.slider {
-                background-color: #ff3034
+                background-color: #508730
             }
 
             input:checked+.slider:before {
@@ -321,7 +321,7 @@ R"(<!doctype html>
                 position: absolute;
                 left: 5px;
                 top: 5px;
-                background: #ff3034;
+                background: #508730;
                 width: 16px;
                 height: 16px;
                 border-radius: 100px;
@@ -374,11 +374,11 @@ R"(<!doctype html>
                             <label for="framesize">Resolution</label>
                             <select id="framesize" class="default-action">
                                 <option value="10">UXGA(1600x1200)</option>
-                                <option value="9">SXGA(1280x1024)</option>
+                                <option value="9" selected="selected">SXGA(1280x1024)</option>
                                 <option value="8">XGA(1024x768)</option>
                                 <option value="7">SVGA(800x600)</option>
                                 <option value="6">VGA(640x480)</option>
-                                <option value="5" selected="selected">CIF(400x296)</option>
+                                <option value="5">CIF(400x296)</option>
                                 <option value="4">QVGA(320x240)</option>
                                 <option value="3">HQVGA(240x176)</option>
                                 <option value="0">QQVGA(160x120)</option>
@@ -544,6 +544,13 @@ R"(<!doctype html>
                         <div class="input-group" id="interval-group">
                             <label for="interval">Time-Lapse Interval [seconds]</label>
                             <input type="number" id="interval" min="0" max="86400" value="1" class="default-action">
+                        </div>
+                        <div class="input-group" id="flash-group">
+                          <label for="flash">Flash led (for stills only)</label>
+                          <div class="switch">
+                                <input id="flash" type="checkbox" class="default-action">
+                                <label class="slider" for="flash"></label>
+                          </div>
                         </div>
                         <section id="buttons">
                             <button id="get-still">Get Still</button>

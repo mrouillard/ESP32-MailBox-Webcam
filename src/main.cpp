@@ -6,6 +6,7 @@
 #include "HTTPApp.h"
 #include "NTP.h"
 #include "mDNS.h"
+#include "settings.h"
 
 void setup() 
 {
@@ -18,7 +19,7 @@ void setup()
   WiFiInit();
   NTPInit();
   printLocalTime();
-  mdnsInit("bal","ESP32-CAM for mailbox");
+  mdnsInit(LOCAL_NAME,"ESP32-CAM for mailbox");
 
   HTTPAppStartCameraServer();
 }

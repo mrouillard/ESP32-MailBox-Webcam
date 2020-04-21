@@ -1,7 +1,8 @@
 #include "WiFi.h"
 #include "time.h"
+#include <settings.h>
 
-const char* ntpServer = "fr.pool.ntp.org";
+const char* ntpServer = NTP_SERVER;
 const long  gmtOffset_sec = 3600;
 const int   daylightOffset_sec = 3600;
 int second;

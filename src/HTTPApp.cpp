@@ -51,6 +51,7 @@ httpd_handle_t stream_httpd = NULL;
 httpd_handle_t camera_httpd = NULL;
 
 int ROTATE = 0;
+int FLASH = 0;
 
 static size_t HTTPAppJPGEncodeStream(void *arg, size_t index, const void *data, size_t len)
 {
@@ -79,6 +80,9 @@ static esp_err_t HTTPAppHandlerCaptureJPG(httpd_req_t *req)
 	
 	pinMode(LED_FLASH, OUTPUT); // prepare the pin for the LED
 	
+	if(FLASH == 1) digitalWrite(LED_FLASH, HIGH) ;
+	
+	/*
 	//checking if flash param is passed in url
 	buf_len = httpd_req_get_url_query_len(req) + 1;
 	if (buf_len > 1) {
@@ -93,6 +97,7 @@ static esp_err_t HTTPAppHandlerCaptureJPG(httpd_req_t *req)
 			}
 		}
 	}
+	*/
 
 	fb = esp_camera_fb_get();
 	if (!fb) {
@@ -334,6 +339,10 @@ static esp_err_t HTTPAppHandlerCMD(httpd_req_t *req)
 	else if (!strcmp(variable, "rotate")) 
 	{
 		ROTATE = val;
+	}
+	else if (!strcmp(variable, "flash"))
+	{
+		FLASH = val;
 	}
 	else
 	{
