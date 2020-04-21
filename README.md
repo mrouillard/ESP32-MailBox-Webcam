@@ -13,7 +13,8 @@ I have added NTP, mDNS and an optional parameter to trigger the LED flash when t
 
 * Rename `include\wifi_credentials.example` to `include\wifi_credentials.h` and enter your WiFi credentials in the file.
 * Remove the comment for your board in `include\pins_camera.h` and comment all other boards
-* modify line 21 of main.cpp to change the local name. Defaut value is `bal` which gives a local name bal.local. @TODO: put this setting in settings.h
+* modify settings.h `LOCAL_NAME` to change the local name. Defaut value is `bal` which gives a local name `bal.local`.
+* modify settings.h `NTP_SERVER` to change the ntp server. Default is `fr.pool.ntp.org`
 
 ## Take a still with flash on
 
@@ -39,9 +40,10 @@ ffmpeg.exe -r 60 -f image2 -i "C:\Temp\timelapse\pic%05d.jpg"  -codec libx264 -c
 * `-vframes <number>` specifies the number frames/images in the video, if not all images should be used
 * `-vf "transpose=<number>"` Rotating: 0 = 90° Counterclockwise, 1 = 90° Clockwise, 2 = 90° Counterclockwise, 3 = 90° Clockwise and Vertical Flip. Use `-vf "transpose=2,transpose=2"` for 180 degrees
 
-## ToDO
+## @TODO
 
-* Add DeepSleep option for timelaps
+* secure web interface with SSL (self-generated certificate)
+* Add DeepSleep option for timelapse
 * Save configuration from web permanently
 
 ## Links
