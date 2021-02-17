@@ -5,10 +5,10 @@
 #include "TimeLaps.h"
 #include "HTTPApp.h"
 #include "NTP.h"
-#include "mDNS.h"
+#include "multicastDNS.h"
 #include "settings.h"
 
-void setup() 
+void setup()
 {
   Serial.begin(115200);
   Serial.println();
@@ -19,12 +19,12 @@ void setup()
   WiFiInit();
   NTPInit();
   printLocalTime();
-  mdnsInit(LOCAL_NAME,"ESP32-CAM for mailbox");
+  mdnsInit(LOCAL_NAME, "ESP32-CAM for mailbox");
 
   HTTPAppStartCameraServer();
 }
 
-void loop() 
+void loop()
 {
-	TimeLapsProcess();
+  TimeLapsProcess();
 }

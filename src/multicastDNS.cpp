@@ -1,11 +1,15 @@
+#include <esp_wifi_types.h>
 #include <ESPmDNS.h>
 
-void mdnsInit(const char *name,const char *longname)
+void mdnsInit(const char *name, const char *longname)
 {
     //initialize mDNS service
-    if(MDNS.begin(name)) {
+    if (MDNS.begin(name))
+    {
         printf("mDNS responder started with hostname %s\n", name);
-    } else {
+    }
+    else
+    {
         printf("mDNS Init failed\n");
         return;
     }
